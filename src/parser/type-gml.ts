@@ -13,7 +13,7 @@ namespace shape {
   export type Point = [number, number];
 }
 
-namespace unions {
+export namespace unions {
   export type enumerationOfAdministrativeDivisionsByType =
     | "都道府県"
     | "郡市・東京都の区"

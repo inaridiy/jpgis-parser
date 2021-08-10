@@ -1,6 +1,6 @@
 import { Converter } from "./parser/convert";
 import { parse } from "fast-xml-parser";
-import { converted } from "./parser/type-gml";
+import { converted, unions, beforeConvert } from "./parser/type-gml";
 
 export class Parser {
   static parseMany(xmls: string[]) {
@@ -12,3 +12,5 @@ export class Parser {
     return Converter.convert(parsedXml) as converted.convertedGML;
   }
 }
+
+export { converted, Converter, unions, beforeConvert };
