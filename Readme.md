@@ -3,6 +3,8 @@
 国土地理院が配信している基盤地図情報のうちの基本項目を扱いやすいオブジェクトに変換するプラグインです
 配信リンク=> https://www.gsi.go.jp/kiban/
 
+github リポジトリ=> https://github.com/inaridiy/jpgis-parser
+
 # 使用方法
 
 ```js
