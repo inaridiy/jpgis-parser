@@ -304,6 +304,11 @@ export namespace converted {
     type: unions.streetAreaTypeEnum;
     sbaNo?: string;
   }
+
+  export interface CommBdry extends Base {
+    loc: shape.Curve;
+    type: unions.enumerationOfBoundaryTypesOfAdministrativeDivisions;
+  }
 }
 
 export namespace beforeConvert {

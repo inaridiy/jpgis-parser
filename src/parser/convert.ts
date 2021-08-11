@@ -64,6 +64,16 @@ export class Converter {
             return this.convertCommPt(value as beforeConvert.typeGML["CommPt"]);
           case "SBAPt":
             return this.convertSBAPt(value as beforeConvert.typeGML["SBAPt"]);
+          case "RdCompt":
+            return this.convertRdCompt(
+              value as beforeConvert.typeGML["RdCompt"]
+            );
+          case "CommBdry":
+            return this.convertCommBdry(
+              value as beforeConvert.typeGML["CommBdry"]
+            );
+          case " SBBdry":
+            return this.convertSBBdry(value as beforeConvert.typeGML["SBBdry"]);
           default:
             return console.error("対応してないkey: " + _key);
         }
@@ -492,6 +502,41 @@ export class Converter {
         vis,
         pos: this.convertPos(pos),
         sbaNo,
+      };
+    });
+    return result;
+  }
+  static convertCommBdry(
+    ary: beforeConvert.typeGML["CommBdry"]
+  ): converted.CommBdry[] | undefined {
+    const result = ary?.map((obj) => {
+      const { fid, lfSpanFr, devDate, orgGILvl, vis, loc, type } = obj;
+      return {
+        fid,
+        lfSpanFr: lfSpanFr["gml:timePosition"],
+        devDate: devDate["gml:timePosition"],
+        orgGILvl,
+        vis,
+        loc: this.convertCurve(loc),
+        type,
+      };
+    });
+    return result;
+  }
+  static convertSBBdry(
+    ary: beforeConvert.typeGML["SBBdry"]
+  ): converted.SBBdry[] | undefined {
+    const result = ary?.map((obj) => {
+      const { fid, lfSpanFr, devDate, orgGILvl, vis, area, type, sbaNo } = obj;
+      return {
+        fid,
+        lfSpanFr: lfSpanFr["gml:timePosition"],
+        devDate: devDate["gml:timePosition"],
+        orgGILvl,
+        vis,
+        area: this.convertArea(area),
+        sbaNo,
+        type,
       };
     });
     return result;
