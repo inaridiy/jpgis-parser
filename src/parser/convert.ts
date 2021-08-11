@@ -18,6 +18,7 @@ export class Converter {
   static convert(obj: beforeConvert.typeGML) {
     const result = {} as any;
     Object.entries(obj).forEach(([_key, value]) => {
+      value = Array.isArray(value) ? value : [value];
       const converted = (() => {
         switch (_key) {
           case "gml:description":
@@ -95,9 +96,12 @@ export class Converter {
       curve["gml:Curve"]["gml:segments"]["gml:LineStringSegment"][
         "gml:posList"
       ];
-    const pointList = pointListStr
-      .split("\n")
-      .map((point) => point.split(" ").map(parseFloat));
+    const pointList = pointListStr.split("\n").map((point) =>
+      point
+        .split(" ")
+        .map(parseFloat)
+        .filter((e) => !isNaN(e))
+    );
     return pointList as [number, number][];
   }
   static convertPos(point: beforeConvert.gmlPoint) {
