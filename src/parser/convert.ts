@@ -73,7 +73,7 @@ export class Converter {
             return this.convertCommBdry(
               value as beforeConvert.typeGML["CommBdry"]
             );
-          case " SBBdry":
+          case "SBBdry":
             return this.convertSBBdry(value as beforeConvert.typeGML["SBBdry"]);
           default:
             return console.error("対応してないkey: " + _key);
